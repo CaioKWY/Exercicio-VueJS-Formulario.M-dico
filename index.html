@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiro documento VueJS</title>
+    <script src="./vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div id="app">
+     <header>
+        <h1>Formulário do paciente</h1>
+
+    </header>
+    <section>
+        <div>
+           
+               Nome completo: <input type="text" id="txtname" v-model="nomeP">
+               <br>
+               Sexo:
+               <input type="radio" value="homem" v-model="sexoP"> Masculino
+               <input type="radio" value="mulher" v-model="sexoP">Feminino
+           
+                <br>
+                Data de nascimento: <input type="text" v-model="nascP" placeholder="dd/mm/aaaa"> 
+                <br>
+                <select v-model="planoP">
+                    <option value="" disabled>Selecione um plano</option>
+                    <option value="Basico">Basico</option>
+                    <option value="Plus">Plus</option>
+                    <option value="Completo">Completo</option>
+                </select>
+                <br>
+
+                <button @click="cadastrar()">Cadastrar</button>
+                <br>
+
+                <h4 v-if="pacientes.length > 0">Ultimo paciente cadastrado</h4>
+                <p v-if="pacientes.length > 0">{{lastP}}</p>
+
+           
+
+        </div>
+       
+
+    </section>
+    <section>
+        <h3>Pacientes Cadastrados</h3>
+        <ol>
+            <li v-for="p in pacientes">{{p.nome}} - Plano {{p.plano}}</li>
+        </ol>
+    </section>
+    <section v-if="planoB.length > 0">
+        <h3>Pacientes Plano Basico</h3>
+        <ul>
+            <li v-for="p in planoB">{{p.nome}}</li>
+        </ul>
+    </section>
+    
+    <section v-if="planoPlus.length > 0">
+        <h3>Pacientes Plano Plus</h3>
+        <ul>
+            <li v-for="p in planoPlus">{{p.nome}}</li>
+        </ul>
+    </section>
+    
+    <section v-if="planoC.length > 0">
+        <h3>Pacientes Plano Completo</h3>
+        <ul>
+            <li v-for="p in planoC">{{p.nome}}</li>
+        </ul>
+    </section>
+    <footer>
+        <p>
+            &copy; Nostrils
+        </p>
+
+    </footer>
+
+   
+   </div>
+   <script src="script.js"></script>
+</body>
+</html>
